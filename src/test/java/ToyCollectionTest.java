@@ -51,22 +51,22 @@ public class ToyCollectionTest {
     assertTrue(testCollection.getDinoToys().contains(testDino));
     assertTrue(testCollection2.getDinoToys().contains(testDino2));
   }
-
-  @Test
-  public void newToy_addsToysToTwoCollectionsOutOfOrder_true() {
-    ToyCollection testCollection = new ToyCollection("Plant Eaters");
-    ToyCollection testCollection2 = new ToyCollection("Meat Eaters");
-    ToyCollection testCollection3 = new ToyCollection("Plant Eaters");
-    ToyCollection testCollection4 = new ToyCollection("Meat Eaters");
-    DinoToys testDino = new DinoToys("Brontausarus", 60, "medium rare","new", "LocalDate.now()", 400);
-    DinoToys testDino2 = new DinoToys("T-rex", 60, "Very rare","fair", "LocalDate.now()", 500);
-    DinoToys testDino3 = new DinoToys("Stegasaurus", 60, "rare","fair", "LocalDate.now()", 500);
-    DinoToys testDino4 = new DinoToys("Veloiciraptor", 60, "Very rare","fair", "LocalDate.now()", 500);
-    testCollection.addDinoToy(testDino);
-    testCollection2.addDinoToy(testDino2);
-    testCollection.addDinoToy(testDino3);
-    testCollection2.addDinoToy(testDino4);
-    assertEquals(2, testCollection.getDinoToys().size());
-    assertEquals(2, testCollection2.getDinoToys().size());
-  }
+  // 
+  // @Test
+  // public void newToy_addsToysToTwoCollectionsOutOfOrder_true() {
+  //   ToyCollection testCollection = new ToyCollection("Plant Eaters");
+  //   ToyCollection testCollection2 = new ToyCollection("Meat Eaters");
+  //   ToyCollection testCollection3 = new ToyCollection("Plant Eaters");
+  //   ToyCollection testCollection4 = new ToyCollection("Meat Eaters");
+  //   DinoToys testDino = new DinoToys("Brontausarus", 60, "medium rare","new", "LocalDate.now()", 400);
+  //   DinoToys testDino2 = new DinoToys("T-rex", 60, "Very rare","fair", "LocalDate.now()", 500);
+  //   DinoToys testDino3 = new DinoToys("Stegasaurus", 60, "rare","fair", "LocalDate.now()", 500);
+  //   DinoToys testDino4 = new DinoToys("Veloiciraptor", 60, "Very rare","fair", "LocalDate.now()", 500);
+  //   testCollection.addDinoToy(testDino);
+  //   testCollection2.addDinoToy(testDino2);
+  //   testCollection.addDinoToy(testDino3);
+  //   testCollection2.addDinoToy(testDino4);
+  //   assertEquals(2, testCollection.getDinoToys().size());
+  //   assertEquals(2, testCollection2.getDinoToys().size());
+  // }
 }

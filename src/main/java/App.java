@@ -15,14 +15,14 @@ public class App {
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String collectionName = request.queryParams("collectionName");
-      ToyCollection newCollection = new ToyCollection(collectionName);
-      ArrayList<ToyCollection> collections = request.session().attribute("collections");
-
-      model.put("collections", request.session().attribute("collections"));
-
-      if (collections == null) {
-        collections = new ArrayList<ToyCollection>();
-        request.session().attribute("collections", collections);
+      if(collectionName != null) {
+        ToyCollection newCollection = new ToyCollection(collectionName);
+        ArrayList<ToyCollection> collections = request.session().attribute("collections");
+        model.put("collections", request.session().attribute("collections"));
+        if (collections == null) {
+          collections = new ArrayList<ToyCollection>();
+          request.session().attribute("collections", collections);
+        }
       }
 
       model.put("collectionsAll", ToyCollection.getAllCollections());
@@ -32,13 +32,14 @@ public class App {
     }, new VelocityTemplateEngine());
 
 
-    get("/collections", (request, response) -> {
+    get("collections/:id/new-toy", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      // model.put("collectionsObject", ToyCollection);
-      model.put("collectionsAll", ToyCollection.getAllCollections());
-      model.put("template", "templates/displayAllCollections.vtl");
+      ToyCollection collection = ToyCollection.find(Integer.parseInt(request.params(":id")));
+      model.put("collection", collection);
+      model.put("template", "templates/dinoToy-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
 
     get("/toys", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
@@ -55,21 +56,20 @@ public class App {
       String manufactured = request.queryParams("manufactured");
       int price = Integer.parseInt(request.queryParams("price"));
       DinoToys newToy = new DinoToys(type, size, rarity, condition, manufactured, price);
+      ToyCollection toyCollection = ToyCollection.find(Integer.parseInt(request.queryParams("collectID")));
+      ToyCollection.addDinoToy(newToy);
+      model.put("collection", toyCollection);
       model.put("template", "templates/dinoToy-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     get("/inventory", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("collections", ToyCollection.all());
+      model.put("collection", ToyCollection.getDinoToys());
       model.put("toys", DinoToys.all());
       model.put("template", "templates/index.vtl");
       model.put("template", "templates/inventory.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-
-
-
-
   }
 }

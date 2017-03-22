@@ -5,7 +5,7 @@ public class ToyCollection {
   private String mName;
   private static List<ToyCollection> instances = new ArrayList<ToyCollection>();
   private int mId;
-  private List<DinoToys> mToys;
+  private static List<DinoToys> mToys;
 
 
   public ToyCollection(String name) {
@@ -19,9 +19,9 @@ public class ToyCollection {
     return mName;
   }
 
-  public static List<ToyCollection> all() {
-    return instances;
-  }
+  // public static List<ToyCollection> all() {
+  //   return instances;
+  // }
 
   public static void clear() {
     instances.clear();
@@ -35,11 +35,11 @@ public class ToyCollection {
     return instances.get(id - 1);
   }
 
-  public List<DinoToys> getDinoToys() {
+  public static List<DinoToys> getDinoToys() {
     return mToys;
   }
 
-  public void addDinoToy(DinoToys toy) {
+  public static void addDinoToy(DinoToys toy) {
     mToys.add(toy);
   }
 

@@ -15,8 +15,8 @@
 <p>Found something</p>
 <ul>
   #foreach ($collect in $collectionsAll)
-    <li>$collect.getName()</li>
-    <li>$collect.getId()</li>
+    <li><a href="/collections/$collect.getId()/new-toy">$collect.getName()</a></li>
+
   #end
 </ul>
 #else
@@ -24,7 +24,7 @@
     Nothing to see here.
   </p>
 #end
-<a href="/categories/new">Add New Category</a>
+
 <!--categories.vtl-->
 
 

@@ -1,0 +1,18 @@
+<!--categories.vtl-->
+<h1>All Collections</h1>
+
+#if ($collectionsAll)
+<p>Found something</p>
+<ul>
+  #foreach ($collect in $collectionsAll)
+    <li>$collect.getName()</li>
+    <li>$collect.getId()</li>
+  #end
+</ul>
+#else
+  <p>
+    Nothing to see here.
+  </p>
+#end
+<a href="/categories/new">Add New Category</a>
+<!--categories.vtl-->
