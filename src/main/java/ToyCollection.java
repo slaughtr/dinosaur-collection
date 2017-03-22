@@ -42,4 +42,8 @@ public class ToyCollection {
   public void addDinoToy(DinoToys toy) {
     mToys.add(toy);
   }
+
+  public static List<ToyCollection> getAllCollections() {
+    return instances;
+  }
 }

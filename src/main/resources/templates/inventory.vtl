@@ -1,5 +1,5 @@
-
-  #foreach($toy in $collection.getDinoToys())
+<h1>This is the Dinosaur Inventory Page</h1>
+  #foreach($toy in $collections.getDinoToys())
   <ul>
     <li>Type of dinosaur: $toy.getType()</li>
     <li>Size of toy: $toy.getSize()</li>
@@ -9,4 +9,8 @@
     <li>Value of toy: $toy.getPrice()</li>
     <li>Inventory number: $toy.getId()</li>
   </ul>
+  #end
+
+  #foreach($toy in $toys.all())
+    <p>$toy.getType()</p><br>
   #end

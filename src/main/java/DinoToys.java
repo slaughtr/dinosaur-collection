@@ -56,5 +56,8 @@ public class DinoToys {
     return jurassicPark.get(id - 1);
   }
 
+  public static List<DinoToys> all() {
+    return jurassicPark;
+  }
 
 }
