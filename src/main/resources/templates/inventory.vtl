@@ -1,0 +1,12 @@
+
+  #foreach($toy in $collection.getDinoToys())
+  <ul>
+    <li>Type of dinosaur: $toy.getType()</li>
+    <li>Size of toy: $toy.getSize()</li>
+    <li>Rarity of toy: $toy.getRarity()</li>
+    <li>Condition of toy: $toy.getCondition()</li>
+    <li>Manufacture date of toy: $toy.getManufactured()</li>
+    <li>Value of toy: $toy.getPrice()</li>
+    <li>Inventory number: $toy.getId()</li>
+  </ul>
+  #end
